@@ -13,10 +13,13 @@ const TodoList = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [error, setError] = useState<string | null>(null);
 
+  const domain = "https://rest-api-0hhj.onrender.com/";
+  // const domain = "http://localhost:3001/";
+
   useEffect(() => {
     const fetchTodos = async () => {
       try {
-        const response = await axios.get<Todo[]>('http://rest-api-0hhj.onrender.com/todo/list', { withCredentials: true });
+        const response = await axios.get<Todo[]>(`${domain}todo/list`, { withCredentials: true });
         console.log(response.data)
         setTodos(response.data);
         // console.log(todos)

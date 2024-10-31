@@ -5,9 +5,9 @@ export declare class TodoController {
     constructor(prisma: PrismaService);
     getList(): Promise<{
         title: string;
-        id: number;
         due_on: Date | null;
         is_done: boolean;
+        id: number;
     }[]>;
     add(task: CreateTaskDto): Promise<{
         status: string;

@@ -4,7 +4,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateTaskDto } from './create-task.dto';
 
 @Controller('todo')
-export class TodoController {
+export class TodoController {　
 
     constructor(
         private prisma: PrismaService
