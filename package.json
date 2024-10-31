@@ -1,0 +1,8 @@
+{
+    "name": "nest",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "push": "cd front && npm run build && cd ../ && git add . && git commit -m \"[auto] フロントエンドコード修正\" && git push origin main"
+    }
+}
