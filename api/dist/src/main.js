@@ -7,7 +7,7 @@ async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.useGlobalPipes(new common_1.ValidationPipe({}));
     app.enableCors({
-        origin: ['http://localhost:3000', 'http://rest-api-0hhj.onrender.com'],
+        origin: ['http://localhost:3000', 'https://rest-api-0hhj.onrender.com'],
         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
         credentials: true,
     });
