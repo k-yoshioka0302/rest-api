@@ -12,8 +12,7 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-model Task {
-    
+model Task {   
       id          Int      @id @default(autoincrement())
     title       String
     completed   Boolean  @default(false)
