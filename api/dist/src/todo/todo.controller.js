@@ -16,40 +16,30 @@ exports.TodoController = void 0;
 const common_1 = require("@nestjs/common");
 const prisma_service_1 = require("../prisma/prisma.service");
 const create_task_dto_1 = require("./create-task.dto");
+const todo_service_1 = require("./todo.service");
 let TodoController = class TodoController {
-    constructor(prisma) {
+    constructor(prisma, todoService) {
         this.prisma = prisma;
+        this.todoService = todoService;
     }
     async getList() {
         const result = await this.prisma.task.findMany({
             where: {
-                is_done: false
+                completed: false
             }
         });
-        return [
-            ...result
-        ];
+        return result;
+    }
+    async addTask(title) {
+        return await this.todoService.createTask(title);
     }
     async add(task) {
         const result = await this.prisma.task.create({
             data: task
         });
         return {
-            status: "OK"
-        };
-    }
-    async done(param) {
-        await this.prisma.task.update({
-            data: {
-                is_done: true
-            },
-            where: {
-                id: parseInt(param.id)
-            }
-        });
-        return {
             status: "OK",
-            param
+            task: result
         };
     }
 };
@@ -61,21 +51,22 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], TodoController.prototype, "getList", null);
 __decorate([
+    (0, common_1.Post)(),
+    __param(0, (0, common_1.Body)('title')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], TodoController.prototype, "addTask", null);
+__decorate([
     (0, common_1.Post)(""),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_task_dto_1.CreateTaskDto]),
     __metadata("design:returntype", Promise)
 ], TodoController.prototype, "add", null);
-__decorate([
-    (0, common_1.Post)(":id/done"),
-    __param(0, (0, common_1.Param)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", Promise)
-], TodoController.prototype, "done", null);
 exports.TodoController = TodoController = __decorate([
     (0, common_1.Controller)('todo'),
-    __metadata("design:paramtypes", [prisma_service_1.PrismaService])
+    __metadata("design:paramtypes", [prisma_service_1.PrismaService,
+        todo_service_1.TodoService])
 ], TodoController);
 //# sourceMappingURL=todo.controller.js.map

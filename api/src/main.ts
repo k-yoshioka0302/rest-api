@@ -11,12 +11,6 @@ async function bootstrap() {
         }),
     );
 
-    //     app.enableCors({
-    //         origin: ['http://localhost:3000', 'https://rest-api-0hhj.onrender.com'], // フロントエンドのオリジン
-    // 　　　　        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-    //         credentials: true, // クッキーや認証情報を許可する場合
-    //     });
-
     app.enableCors({
         origin: (origin, callback) => {
             callback(null, true); // 全てのオリジンを許可
