@@ -2,6 +2,7 @@
 import { Controller, Get, Body, Post, Param, Patch, NotFoundException, InternalServerErrorException, BadRequestException, HttpCode, HttpStatus } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateTaskDto } from './create-task.dto';
+import { AppModule } from '../app.module';
 import { TodoService } from './todo.service';
 @Controller('todo')
 export class TodoController {
