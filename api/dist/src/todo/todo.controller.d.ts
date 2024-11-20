@@ -6,33 +6,24 @@ export declare class TodoController {
     private readonly todoService;
     constructor(prisma: PrismaService, todoService: TodoService);
     getList(): Promise<{
-        id: number;
         title: string;
-        description: string | null;
         completed: boolean;
-        completedAt: Date | null;
         created_at: Date;
-        updatedAt: Date;
+        id: number;
     }[]>;
     addTask(title: string): Promise<{
-        id: number;
         title: string;
-        description: string | null;
         completed: boolean;
-        completedAt: Date | null;
         created_at: Date;
-        updatedAt: Date;
+        id: number;
     }>;
     add(task: CreateTaskDto): Promise<{
         status: string;
         task: {
-            id: number;
             title: string;
-            description: string | null;
             completed: boolean;
-            completedAt: Date | null;
             created_at: Date;
-            updatedAt: Date;
+            id: number;
         };
     }>;
 }
