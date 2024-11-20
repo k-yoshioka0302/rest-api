@@ -25,7 +25,9 @@ let TodoController = class TodoController {
     async getList() {
         const result = await this.prisma.task.findMany({
             where: {
-                completed: false
+                completed: {
+                    equals: false
+                }
             }
         });
         return result;
